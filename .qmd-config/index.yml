@@ -1,0 +1,4 @@
+collections:
+  C:\Users\admin\wiki\investment\wiki:
+    path: C:\Users\admin\wiki\investment\wiki
+    pattern: "**/*.md"
