@@ -1,0 +1,1017 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>现金流瀑布计算器</title>
+  <style>
+    :root {
+      --bg: #f4efe6;
+      --bg-2: #e9dcc7;
+      --card: rgba(255, 250, 242, 0.82);
+      --ink: #1f2a24;
+      --muted: #5f6d64;
+      --line: rgba(31, 42, 36, 0.1);
+      --gold: #d89b37;
+      --forest: #285943;
+      --river: #497a96;
+      --clay: #b46845;
+      --danger: #a7382b;
+      --shadow: 0 20px 60px rgba(50, 39, 23, 0.12);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(216, 155, 55, 0.24), transparent 32%),
+        radial-gradient(circle at top right, rgba(73, 122, 150, 0.16), transparent 28%),
+        linear-gradient(160deg, var(--bg), #f8f4ee 44%, var(--bg-2));
+      min-height: 100vh;
+    }
+
+    .shell {
+      width: min(1240px, calc(100vw - 32px));
+      margin: 24px auto 40px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 32px;
+      background:
+        linear-gradient(135deg, rgba(40, 89, 67, 0.92), rgba(31, 42, 36, 0.94)),
+        linear-gradient(135deg, rgba(216, 155, 55, 0.35), transparent 65%);
+      color: #f6f0e5;
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -80px -80px auto;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(216, 155, 55, 0.4), transparent 68%);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.1);
+      font-size: 13px;
+      letter-spacing: 0.06em;
+    }
+
+    h1 {
+      margin: 18px 0 10px;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.08;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0;
+      color: rgba(246, 240, 229, 0.86);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 380px minmax(0, 1fr);
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .panel,
+    .card {
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      border-radius: var(--radius);
+      background: var(--card);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .panel {
+      padding: 22px;
+      align-self: start;
+      position: sticky;
+      top: 20px;
+    }
+
+    .panel h2,
+    .card h2 {
+      margin: 0 0 14px;
+      font-size: 18px;
+    }
+
+    .panel h3,
+    .card h3 {
+      margin: 18px 0 10px;
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    label {
+      display: grid;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--ink);
+      font: inherit;
+    }
+
+    input:focus,
+    select:focus {
+      outline: 2px solid rgba(73, 122, 150, 0.25);
+      border-color: rgba(73, 122, 150, 0.45);
+    }
+
+    .checkbox {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--ink);
+    }
+
+    .checkbox input {
+      width: 18px;
+      height: 18px;
+      margin: 0;
+    }
+
+    .dashboard {
+      display: grid;
+      gap: 20px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      padding: 22px;
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .metric {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(31, 42, 36, 0.06);
+    }
+
+    .metric .label {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .metric .value {
+      margin-top: 6px;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .metric .sub {
+      margin-top: 4px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .bar-stack {
+      display: flex;
+      width: 100%;
+      height: 18px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(31, 42, 36, 0.08);
+      margin: 14px 0 16px;
+    }
+
+    .bar {
+      height: 100%;
+    }
+
+    .bar.long { background: linear-gradient(90deg, var(--forest), #3f7f64); }
+    .bar.option { background: linear-gradient(90deg, var(--river), #6b9bb3); }
+    .bar.cash { background: linear-gradient(90deg, var(--gold), #f0bc63); }
+
+    .legend,
+    .checklist,
+    .actions,
+    .timeline {
+      display: grid;
+      gap: 10px;
+    }
+
+    .legend-item,
+    .checklist li,
+    .action,
+    .timeline-step {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(31, 42, 36, 0.06);
+    }
+
+    .legend-item strong,
+    .timeline-step strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .legend-swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-top: 4px;
+      flex: 0 0 auto;
+    }
+
+    .legend-copy {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      flex: 1;
+    }
+
+    .legend-copy p,
+    .timeline-step p,
+    .action p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .money {
+      font-variant-numeric: tabular-nums;
+      font-weight: 700;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .pill.good {
+      background: rgba(40, 89, 67, 0.12);
+      color: var(--forest);
+    }
+
+    .pill.warn {
+      background: rgba(216, 155, 55, 0.18);
+      color: #865714;
+    }
+
+    .pill.bad {
+      background: rgba(167, 56, 43, 0.12);
+      color: var(--danger);
+    }
+
+    .callout {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(216, 155, 55, 0.16), rgba(180, 104, 69, 0.1));
+      border: 1px solid rgba(216, 155, 55, 0.2);
+      line-height: 1.65;
+      color: #513b1e;
+    }
+
+    .checklist {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .status {
+      white-space: nowrap;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .status.good { color: var(--forest); }
+    .status.warn { color: #865714; }
+    .status.bad { color: var(--danger); }
+
+    .footer-note {
+      margin-top: 18px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    @media (max-width: 980px) {
+      .layout,
+      .cards,
+      .metric-row,
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .panel {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div class="eyebrow">Cash Flow Waterfall System</div>
+      <h1>现金流瀑布计算器</h1>
+      <p>
+        把“年龄 + 20”“80/20 期权结构”“利润先补现金再回流长期仓位”的规则做成一个前端工具。
+        输入账户现状后，页面会直接给出目标仓位、瀑布分配、再平衡提示和风控信号。
+      </p>
+    </section>
+
+    <section class="layout">
+      <aside class="panel">
+        <h2>输入参数</h2>
+        <div class="form-grid">
+          <h3>账户基础</h3>
+          <label>
+            年龄
+            <input id="age" type="number" min="18" max="90" value="38">
+          </label>
+          <label>
+            账户总资产
+            <input id="total" type="number" min="0" step="1000" value="1000000">
+          </label>
+          <label>
+            收入状态
+            <select id="incomeStatus">
+              <option value="employed">有收入</option>
+              <option value="retired">退休 / 自由职业</option>
+            </select>
+          </label>
+
+          <h3>当前仓位</h3>
+          <label>
+            当前定投仓位金额
+            <input id="currentLong" type="number" min="0" step="1000" value="520000">
+          </label>
+          <label>
+            当前期权仓位金额
+            <input id="currentOption" type="number" min="0" step="1000" value="380000">
+          </label>
+          <label>
+            当前现金仓位金额
+            <input id="currentCash" type="number" min="0" step="1000" value="100000">
+          </label>
+          <label>
+            本次可分配期权利润
+            <input id="optionProfit" type="number" min="0" step="1000" value="30000">
+          </label>
+
+          <h3>市场与风控</h3>
+          <label>
+            当前 RSI
+            <input id="rsi" type="number" min="0" max="100" step="0.1" value="33">
+          </label>
+          <label>
+            标的自低点反弹幅度（%）
+            <input id="rebound" type="number" min="0" max="200" step="0.1" value="17">
+          </label>
+          <label>
+            保证金使用率（占总资产 %）
+            <input id="marginUsage" type="number" min="0" max="100" step="0.1" value="12">
+          </label>
+          <label>
+            Sell Put Delta
+            <input id="sellPutDelta" type="number" min="0" max="1" step="0.01" value="0.18">
+          </label>
+          <label>
+            市场自高点回撤（%）
+            <input id="marketDrawdown" type="number" min="0" max="100" step="0.1" value="18">
+          </label>
+          <label>
+            若继续下跌，还可能再跌（%）
+            <input id="furtherDrop" type="number" min="0" max="100" step="0.1" value="8">
+          </label>
+          <label class="checkbox">
+            <input id="bullRelax" type="checkbox">
+            <span>长期牛市下放宽 LEAPS 入场阈值到 RSI 40</span>
+          </label>
+          <label class="checkbox">
+            <input id="systemicDrawdown" type="checkbox" checked>
+            <span>当前属于系统性回调，可考虑反向再平衡</span>
+          </label>
+        </div>
+        <p class="footer-note">
+          规则来源于知识库中的“现金流瀑布：全周期风险管理与资产增值体系”。
+          这是纪律化分配工具，不是收益预测器。
+        </p>
+      </aside>
+
+      <section class="dashboard">
+        <div class="cards">
+          <article class="card">
+            <h2>目标仓位</h2>
+            <div class="metric-row">
+              <div class="metric">
+                <div class="label">定投仓位目标</div>
+                <div class="value" id="targetLongPct">58%</div>
+                <div class="sub money" id="targetLongAmount">¥580,000</div>
+              </div>
+              <div class="metric">
+                <div class="label">期权仓位目标</div>
+                <div class="value" id="targetOptionPct">37%</div>
+                <div class="sub money" id="targetOptionAmount">¥370,000</div>
+              </div>
+              <div class="metric">
+                <div class="label">现金仓位目标</div>
+                <div class="value" id="targetCashPct">5%</div>
+                <div class="sub money" id="targetCashAmount">¥50,000</div>
+              </div>
+            </div>
+
+            <div class="bar-stack" aria-hidden="true">
+              <div class="bar long" id="barLong"></div>
+              <div class="bar option" id="barOption"></div>
+              <div class="bar cash" id="barCash"></div>
+            </div>
+
+            <div class="legend">
+              <div class="legend-item">
+                <div class="legend-copy">
+                  <span class="legend-swatch" style="background: var(--forest);"></span>
+                  <div>
+                    <strong>长期层</strong>
+                    <p>内部按 30% QQQM / 30% VOO / 40% 优质个股分配。</p>
+                  </div>
+                </div>
+                <span class="money" id="longBreakdown">¥174,000 / ¥174,000 / ¥232,000</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-copy">
+                  <span class="legend-swatch" style="background: var(--river);"></span>
+                  <div>
+                    <strong>期权层</strong>
+                    <p>内部按 80% Wheel Strategy / 20% LEAPS 分层。</p>
+                  </div>
+                </div>
+                <span class="money" id="optionBreakdown">¥296,000 / ¥74,000</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-copy">
+                  <span class="legend-swatch" style="background: var(--gold);"></span>
+                  <div>
+                    <strong>个股上限</strong>
+                    <p>单支个股不得超过定投层的 10%。</p>
+                  </div>
+                </div>
+                <span class="money" id="singleStockCap">¥58,000</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <h2>现金流瀑布分配</h2>
+            <div class="metric-row">
+              <div class="metric">
+                <div class="label">先补现金</div>
+                <div class="value money" id="waterfallCash">¥0</div>
+                <div class="sub" id="cashGapText">现金已高于目标，无需回补。</div>
+              </div>
+              <div class="metric">
+                <div class="label">再注长期</div>
+                <div class="value money" id="waterfallLong">¥30,000</div>
+                <div class="sub" id="waterfallLongSplit">QQQM ¥9,000 / VOO ¥9,000 / 个股 ¥12,000</div>
+              </div>
+              <div class="metric">
+                <div class="label">Wheel 月度目标</div>
+                <div class="value money" id="wheelIncomeRange">¥4,440 - ¥7,400</div>
+                <div class="sub">按 Wheel 资金的 1.5% - 2.5%</div>
+              </div>
+            </div>
+
+            <div class="callout" id="waterfallNarrative">
+              当前现金已达到目标，因此本次期权利润可全部按长期层比例注入资产底座。
+            </div>
+
+            <div class="timeline">
+              <div class="timeline-step">
+                <div>
+                  <strong>1. 积累</strong>
+                  <p>Wheel 持续产生权利金，优先作为待分配现金流。</p>
+                </div>
+                <span class="pill good">现金流引擎</span>
+              </div>
+              <div class="timeline-step">
+                <div>
+                  <strong>2. 转化</strong>
+                  <p id="leapsHint">RSI 已达到 LEAPS 观察区。</p>
+                </div>
+                <span class="pill" id="leapsPill">观察中</span>
+              </div>
+              <div class="timeline-step">
+                <div>
+                  <strong>3. 注入</strong>
+                  <p id="takeProfitHint">反弹幅度进入 15% - 20% 区间，可评估获利后执行瀑布分配。</p>
+                </div>
+                <span class="pill" id="takeProfitPill">执行窗口</span>
+              </div>
+              <div class="timeline-step">
+                <div>
+                  <strong>4. 防守</strong>
+                  <p id="marginHint">保证金仍在纪律范围内，但只适用于系统性回调。</p>
+                </div>
+                <span class="pill" id="marginPill">可控</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <h2>再平衡与偏离</h2>
+            <ul class="checklist">
+              <li>
+                <span>定投仓位偏离是否超过 5%</span>
+                <span class="status" id="longDeviationStatus">正常</span>
+              </li>
+              <li>
+                <span>期权仓位偏离是否超过 5%</span>
+                <span class="status" id="optionDeviationStatus">正常</span>
+              </li>
+              <li>
+                <span>现金仓位偏离是否超过 5%</span>
+                <span class="status" id="cashDeviationStatus">正常</span>
+              </li>
+              <li>
+                <span>当前总仓位录入是否与总资产一致</span>
+                <span class="status" id="sumStatus">一致</span>
+              </li>
+            </ul>
+            <div class="callout" id="rebalanceNarrative">
+              当前偏离不大，可按季度复核，不必主动调仓。
+            </div>
+          </article>
+
+          <article class="card">
+            <h2>执行建议</h2>
+            <div class="actions" id="actions"></div>
+          </article>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <h2>市场下跌应对</h2>
+            <div class="metric-row">
+              <div class="metric">
+                <div class="label">当前回撤等级</div>
+                <div class="value" id="drawdownStage">修正</div>
+                <div class="sub" id="drawdownText">自高点回撤 18%</div>
+              </div>
+              <div class="metric">
+                <div class="label">可卖出的超额定投</div>
+                <div class="value money" id="trimLongAmount">¥0</div>
+                <div class="sub" id="trimLongText">当前长期层未高于目标。</div>
+              </div>
+              <div class="metric">
+                <div class="label">剩余保证金空间</div>
+                <div class="value money" id="marginHeadroom">¥130,000</div>
+                <div class="sub" id="marginHeadroomText">距 25% 红线还有 13%</div>
+              </div>
+            </div>
+
+            <div class="split">
+              <div class="metric">
+                <div class="label">防守现金火力</div>
+                <div class="value money" id="defenseCash">¥100,000</div>
+                <div class="sub">现有现金 + 可卖出的超额定投</div>
+              </div>
+              <div class="metric">
+                <div class="label">下跌应对总火力</div>
+                <div class="value money" id="totalFirepower">¥230,000</div>
+                <div class="sub">防守现金火力 + 剩余保证金空间</div>
+              </div>
+            </div>
+
+            <div class="callout" id="drawdownNarrative">
+              当前属于系统性回调，可优先动用现金，其次卖出超额定投，最后才动用保证金做战术性 Sell Put。
+            </div>
+          </article>
+
+          <article class="card">
+            <h2>继续下跌时怎么做</h2>
+            <div class="timeline">
+              <div class="timeline-step">
+                <div>
+                  <strong>1. 现金优先</strong>
+                  <p id="downsideCashHint">先用现金层吸收波动，避免一上来就动用保证金。</p>
+                </div>
+                <span class="pill" id="downsideCashPill">先防守</span>
+              </div>
+              <div class="timeline-step">
+                <div>
+                  <strong>2. 反向再平衡</strong>
+                  <p id="downsideTrimHint">只有系统性回调下，才考虑卖出超额定投补现金。</p>
+                </div>
+                <span class="pill" id="downsideTrimPill">条件触发</span>
+              </div>
+              <div class="timeline-step">
+                <div>
+                  <strong>3. Sell Put 纪律</strong>
+                  <p id="downsidePutHint">Delta 维持 0.15 - 0.20，目标是赚权利金，不是主动接股。</p>
+                </div>
+                <span class="pill" id="downsidePutPill">轻仓</span>
+              </div>
+              <div class="timeline-step">
+                <div>
+                  <strong>4. 继续下跌预案</strong>
+                  <p id="downsideRollHint">如果标的继续下跌，优先考虑展期，避免被动行权与保证金利息。</p>
+                </div>
+                <span class="pill" id="downsideRollPill">要预案</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script>
+    const currency = new Intl.NumberFormat("zh-CN", {
+      style: "currency",
+      currency: "CNY",
+      maximumFractionDigits: 0
+    });
+
+    const percent = new Intl.NumberFormat("zh-CN", {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 1
+    });
+
+    const ids = [
+      "age", "total", "incomeStatus", "currentLong", "currentOption", "currentCash",
+      "optionProfit", "rsi", "rebound", "marginUsage", "sellPutDelta", "marketDrawdown",
+      "furtherDrop", "bullRelax", "systemicDrawdown"
+    ];
+
+    ids.forEach((id) => {
+      document.getElementById(id).addEventListener("input", update);
+      document.getElementById(id).addEventListener("change", update);
+    });
+
+    function readNumber(id) {
+      return Number(document.getElementById(id).value) || 0;
+    }
+
+    function clamp(value, min, max) {
+      return Math.min(Math.max(value, min), max);
+    }
+
+    function setText(id, text) {
+      document.getElementById(id).textContent = text;
+    }
+
+    function setHTML(id, html) {
+      document.getElementById(id).innerHTML = html;
+    }
+
+    function setWidth(id, value) {
+      document.getElementById(id).style.width = `${Math.max(value, 0)}%`;
+    }
+
+    function statusClass(level) {
+      if (level === "bad") return "bad";
+      if (level === "warn") return "warn";
+      return "good";
+    }
+
+    function setPill(id, text, level) {
+      const el = document.getElementById(id);
+      el.textContent = text;
+      el.className = `pill ${level}`;
+    }
+
+    function setStatus(id, text, level) {
+      const el = document.getElementById(id);
+      el.textContent = text;
+      el.className = `status ${statusClass(level)}`;
+    }
+
+    function renderActions(items) {
+      setHTML("actions", items.map((item) => `
+        <div class="action">
+          <div>
+            <strong>${item.title}</strong>
+            <p>${item.body}</p>
+          </div>
+          <span class="pill ${item.level}">${item.tag}</span>
+        </div>
+      `).join(""));
+    }
+
+    function update() {
+      const age = clamp(readNumber("age"), 18, 90);
+      const total = Math.max(readNumber("total"), 0);
+      const currentLong = Math.max(readNumber("currentLong"), 0);
+      const currentOption = Math.max(readNumber("currentOption"), 0);
+      const currentCash = Math.max(readNumber("currentCash"), 0);
+      const optionProfit = Math.max(readNumber("optionProfit"), 0);
+      const rsi = clamp(readNumber("rsi"), 0, 100);
+      const rebound = Math.max(readNumber("rebound"), 0);
+      const marginUsage = Math.max(readNumber("marginUsage"), 0);
+      const sellPutDelta = Math.max(readNumber("sellPutDelta"), 0);
+      const marketDrawdown = Math.max(readNumber("marketDrawdown"), 0);
+      const furtherDrop = Math.max(readNumber("furtherDrop"), 0);
+      const bullRelax = document.getElementById("bullRelax").checked;
+      const systemicDrawdown = document.getElementById("systemicDrawdown").checked;
+      const incomeStatus = document.getElementById("incomeStatus").value;
+
+      const targetLongPct = Math.min(age + 20, 70);
+      const targetCashPct = incomeStatus === "retired" ? 10 : 5;
+      const targetOptionPct = Math.max(0, 100 - targetLongPct - targetCashPct);
+
+      const targetLongAmount = total * targetLongPct / 100;
+      const targetOptionAmount = total * targetOptionPct / 100;
+      const targetCashAmount = total * targetCashPct / 100;
+
+      setText("targetLongPct", `${percent.format(targetLongPct)}%`);
+      setText("targetOptionPct", `${percent.format(targetOptionPct)}%`);
+      setText("targetCashPct", `${percent.format(targetCashPct)}%`);
+      setText("targetLongAmount", currency.format(targetLongAmount));
+      setText("targetOptionAmount", currency.format(targetOptionAmount));
+      setText("targetCashAmount", currency.format(targetCashAmount));
+
+      setWidth("barLong", targetLongPct);
+      setWidth("barOption", targetOptionPct);
+      setWidth("barCash", targetCashPct);
+
+      const qqqm = targetLongAmount * 0.3;
+      const voo = targetLongAmount * 0.3;
+      const stocks = targetLongAmount * 0.4;
+      const wheel = targetOptionAmount * 0.8;
+      const leapsBudget = targetOptionAmount * 0.2;
+      const singleStockCap = targetLongAmount * 0.1;
+
+      setText("longBreakdown", `${currency.format(qqqm)} / ${currency.format(voo)} / ${currency.format(stocks)}`);
+      setText("optionBreakdown", `${currency.format(wheel)} / ${currency.format(leapsBudget)}`);
+      setText("singleStockCap", currency.format(singleStockCap));
+
+      const cashGap = Math.max(targetCashAmount - currentCash, 0);
+      const waterfallCash = Math.min(optionProfit, cashGap);
+      const waterfallLong = Math.max(optionProfit - waterfallCash, 0);
+      const flowQqqm = waterfallLong * 0.3;
+      const flowVoo = waterfallLong * 0.3;
+      const flowStocks = waterfallLong * 0.4;
+      const wheelLow = wheel * 0.015;
+      const wheelHigh = wheel * 0.025;
+      const excessLong = Math.max(currentLong - targetLongAmount, 0);
+      const marginHeadroomPct = Math.max(25 - marginUsage, 0);
+      const marginHeadroomAmount = total * marginHeadroomPct / 100;
+      const defenseCash = currentCash + (systemicDrawdown ? excessLong : 0);
+      const totalFirepower = defenseCash + (systemicDrawdown ? marginHeadroomAmount : 0);
+
+      setText("waterfallCash", currency.format(waterfallCash));
+      setText("waterfallLong", currency.format(waterfallLong));
+      setText("wheelIncomeRange", `${currency.format(wheelLow)} - ${currency.format(wheelHigh)}`);
+      setText("waterfallLongSplit", `QQQM ${currency.format(flowQqqm)} / VOO ${currency.format(flowVoo)} / 个股 ${currency.format(flowStocks)}`);
+      setText("cashGapText", cashGap > 0 ? `距离现金目标还差 ${currency.format(cashGap)}。` : "现金已高于目标，无需回补。");
+
+      if (cashGap > 0 && waterfallLong > 0) {
+        setText("waterfallNarrative", `本次利润先回补现金 ${currency.format(waterfallCash)}，剩余 ${currency.format(waterfallLong)} 再按 30/30/40 注入长期层。`);
+      } else if (cashGap > 0) {
+        setText("waterfallNarrative", `本次利润全部用于补现金，目前仍未补满，剩余缺口为 ${currency.format(cashGap - waterfallCash)}。`);
+      } else {
+        setText("waterfallNarrative", "当前现金已达到目标，因此本次期权利润可全部按长期层比例注入资产底座。");
+      }
+
+      const actualTotal = currentLong + currentOption + currentCash;
+      const actualLongPct = total > 0 ? currentLong / total * 100 : 0;
+      const actualOptionPct = total > 0 ? currentOption / total * 100 : 0;
+      const actualCashPct = total > 0 ? currentCash / total * 100 : 0;
+      const longDeviation = Math.abs(actualLongPct - targetLongPct);
+      const optionDeviation = Math.abs(actualOptionPct - targetOptionPct);
+      const cashDeviation = Math.abs(actualCashPct - targetCashPct);
+      const withinLong = longDeviation <= 5;
+      const withinOption = optionDeviation <= 5;
+      const withinCash = cashDeviation <= 5;
+      const sumDiff = Math.abs(actualTotal - total);
+      const sumAligned = total === 0 ? actualTotal === 0 : sumDiff <= Math.max(total * 0.01, 1000);
+
+      setStatus("longDeviationStatus", withinLong ? `正常 (${percent.format(longDeviation)}%)` : `超阈值 (${percent.format(longDeviation)}%)`, withinLong ? "good" : "warn");
+      setStatus("optionDeviationStatus", withinOption ? `正常 (${percent.format(optionDeviation)}%)` : `超阈值 (${percent.format(optionDeviation)}%)`, withinOption ? "good" : "warn");
+      setStatus("cashDeviationStatus", withinCash ? `正常 (${percent.format(cashDeviation)}%)` : `超阈值 (${percent.format(cashDeviation)}%)`, withinCash ? "good" : "warn");
+      setStatus("sumStatus", sumAligned ? "一致" : `差额 ${currency.format(sumDiff)}`, sumAligned ? "good" : "warn");
+
+      if (withinLong && withinOption && withinCash) {
+        setText("rebalanceNarrative", "当前偏离不大，可按季度复核，不必主动调仓。");
+      } else {
+        const parts = [];
+        if (!withinLong) parts.push("长期层");
+        if (!withinOption) parts.push("期权层");
+        if (!withinCash) parts.push("现金层");
+        setText("rebalanceNarrative", `${parts.join("、")} 已偏离目标超过 5%，适合在季度复盘时做一次纪律化调仓。`);
+      }
+
+      const leapsThreshold = bullRelax ? 40 : 35;
+      const leapsReady = rsi <= leapsThreshold;
+      const takeProfitWindow = rebound >= 15 && rebound <= 20;
+      const pastTakeProfitWindow = rebound > 20;
+      const marginSafe = marginUsage <= 25;
+      const sellPutReady = systemicDrawdown && sellPutDelta >= 0.15 && sellPutDelta <= 0.2 && marginSafe;
+      const drawdownStage = marketDrawdown >= 30 ? "深熊" : marketDrawdown >= 20 ? "熊市" : marketDrawdown >= 10 ? "修正" : "轻回撤";
+
+      if (leapsReady) {
+        setText("leapsHint", `RSI ${percent.format(rsi)} 已低于阈值 ${percent.format(leapsThreshold)}，满足 LEAPS 观察条件。`);
+        setPill("leapsPill", "可观察", "good");
+      } else {
+        setText("leapsHint", `RSI ${percent.format(rsi)} 高于阈值 ${percent.format(leapsThreshold)}，资金应继续留在现金池。`);
+        setPill("leapsPill", "先等待", "warn");
+      }
+
+      if (takeProfitWindow) {
+        setText("takeProfitHint", `反弹 ${percent.format(rebound)}% 落在 15% - 20% 区间，适合评估 LEAPS 止盈并执行瀑布分配。`);
+        setPill("takeProfitPill", "执行窗口", "good");
+      } else if (pastTakeProfitWindow) {
+        setText("takeProfitHint", `反弹已到 ${percent.format(rebound)}%，通常已经越过标准止盈窗口，优先考虑兑现而不是继续恋战。`);
+        setPill("takeProfitPill", "偏晚", "warn");
+      } else {
+        setText("takeProfitHint", `反弹仅 ${percent.format(rebound)}%，尚未进入 15% - 20% 的标准止盈区间。`);
+        setPill("takeProfitPill", "未触发", "warn");
+      }
+
+      if (!systemicDrawdown) {
+        setText("marginHint", "当前不属于系统性回调，不建议为了卖 put 主动启用保证金。");
+        setPill("marginPill", "禁用", "bad");
+      } else if (!marginSafe) {
+        setText("marginHint", `保证金使用率 ${percent.format(marginUsage)}% 已超过 25% 红线，应立即压缩风险敞口。`);
+        setPill("marginPill", "超限", "bad");
+      } else if (sellPutReady) {
+        setText("marginHint", `当前满足系统性回调、Delta ${sellPutDelta.toFixed(2)}、保证金 ${percent.format(marginUsage)}% 三项条件，可谨慎执行战术性 Sell Put。`);
+        setPill("marginPill", "可控", "good");
+      } else {
+        setText("marginHint", `系统性回调成立，但需把 Sell Put Delta 控制在 0.15 - 0.20，并确保保证金不超过 25%。`);
+        setPill("marginPill", "谨慎", "warn");
+      }
+
+      setText("drawdownStage", drawdownStage);
+      setText("drawdownText", `自高点回撤 ${percent.format(marketDrawdown)}%`);
+      setText("trimLongAmount", currency.format(systemicDrawdown ? excessLong : 0));
+      setText("trimLongText", systemicDrawdown
+        ? (excessLong > 0 ? "长期层高于目标，可作为反向再平衡资金来源。" : "当前长期层未高于目标，不需要为了抄底额外卖出。")
+        : "非系统性回调，不建议卖出长期层做战术调仓。");
+      setText("marginHeadroom", currency.format(systemicDrawdown ? marginHeadroomAmount : 0));
+      setText("marginHeadroomText", systemicDrawdown
+        ? (marginSafe ? `距 25% 红线还有 ${percent.format(marginHeadroomPct)}%。` : "已突破 25% 红线，没有新增保证金空间。")
+        : "当前未启用系统性回调模式。");
+      setText("defenseCash", currency.format(defenseCash));
+      setText("totalFirepower", currency.format(totalFirepower));
+
+      if (!systemicDrawdown) {
+        setText("drawdownNarrative", "当前未勾选系统性回调，默认只做防守，不做卖出长期层和保证金抄底。");
+      } else if (!marginSafe) {
+        setText("drawdownNarrative", "虽然处于系统性回调，但保证金已经超线。此时应优先降杠杆、保现金，而不是继续扩大战术仓位。");
+      } else {
+        setText("drawdownNarrative", `当前可先动用 ${currency.format(currentCash)} 现金；若仍需腾挪，可卖出最多 ${currency.format(excessLong)} 的超额定投；最后保留 ${currency.format(marginHeadroomAmount)} 以内的保证金空间做轻仓 Sell Put。`);
+      }
+
+      if (currentCash >= targetCashAmount) {
+        setText("downsideCashHint", `现金层已达到目标 ${currency.format(targetCashAmount)}，可以先用现金承接波动，不必急于动用杠杆。`);
+        setPill("downsideCashPill", "有缓冲", "good");
+      } else {
+        setText("downsideCashHint", `现金层低于目标 ${currency.format(cashGap)}，系统性回调里更应该先补现金，而不是直接抄底。`);
+        setPill("downsideCashPill", "先补现金", "warn");
+      }
+
+      if (!systemicDrawdown) {
+        setText("downsideTrimHint", "这不是系统性回调场景，长期层不应为了短线波动被频繁卖出。");
+        setPill("downsideTrimPill", "不触发", "bad");
+      } else if (excessLong > 0) {
+        setText("downsideTrimHint", `长期层高于目标，可卖出最多 ${currency.format(excessLong)} 回到现金池，作为反向再平衡弹药。`);
+        setPill("downsideTrimPill", "可腾挪", "good");
+      } else {
+        setText("downsideTrimHint", "长期层没有超配，不需要卖出长期底仓去硬凑抄底资金。");
+        setPill("downsideTrimPill", "少动作", "warn");
+      }
+
+      if (sellPutReady) {
+        setText("downsidePutHint", `当前可轻仓卖出 Delta ${sellPutDelta.toFixed(2)} 左右的 put，目标是赚权利金，不是提前接股。`);
+        setPill("downsidePutPill", "可轻仓", "good");
+      } else if (!systemicDrawdown) {
+        setText("downsidePutHint", "非系统性回调不建议启用这套 Sell Put 抄底预案。");
+        setPill("downsidePutPill", "先别做", "bad");
+      } else {
+        setText("downsidePutHint", "系统性回调成立，但 Delta 或保证金条件未就绪，先把风险参数调到纪律区间。");
+        setPill("downsidePutPill", "未就绪", "warn");
+      }
+
+      if (furtherDrop > 0) {
+        setText("downsideRollHint", `若从当前点位再跌 ${percent.format(furtherDrop)}%，应优先准备展期而非硬接仓，避免保证金利息和被动行权。`);
+        setPill("downsideRollPill", furtherDrop >= 10 ? "先备展期" : "留预案", furtherDrop >= 10 ? "warn" : "good");
+      } else {
+        setText("downsideRollHint", "默认假设不再继续下跌，但真实执行仍应提前写好展期预案。");
+        setPill("downsideRollPill", "备预案", "warn");
+      }
+
+      const actions = [
+        {
+          title: "先看现金池是否达标",
+          body: cashGap > 0
+            ? `当前现金少于目标 ${currency.format(cashGap)}，本轮利润先补现金，不要急着把资金继续滚回高波动仓位。`
+            : "现金层已经达到目标，本轮利润可以直接向长期层输血。",
+          tag: cashGap > 0 ? "先补现金" : "可注长期",
+          level: cashGap > 0 ? "warn" : "good"
+        },
+        {
+          title: "LEAPS 是否具备入场条件",
+          body: leapsReady
+            ? `RSI 触发阈值，LEAPS 预算建议控制在期权层的 20% 以内，也就是 ${currency.format(leapsBudget)}。`
+            : `RSI 尚未触发，纪律上应该继续持有现金，不因“手痒”提前开仓。`,
+          tag: leapsReady ? "可观察" : "继续等待",
+          level: leapsReady ? "good" : "warn"
+        },
+        {
+          title: "Wheel 收租目标",
+          body: `按当前目标期权层，Wheel 应承担约 ${currency.format(wheel)} 资金，月度权利金目标区间是 ${currency.format(wheelLow)} 到 ${currency.format(wheelHigh)}。`,
+          tag: "收入引擎",
+          level: "good"
+        },
+        {
+          title: "保证金纪律",
+          body: marginSafe
+            ? `保证金仍在 25% 红线以内，但只有在系统性回调里才值得使用，不能把战术工具常态化。`
+            : "保证金已越过 25% 红线，这时要做的是降风险，而不是继续加码。",
+          tag: marginSafe ? "未超限" : "已超限",
+          level: marginSafe ? "warn" : "bad"
+        },
+        {
+          title: "市场下跌预案",
+          body: systemicDrawdown
+            ? `当前系统性回调下，总应对火力约为 ${currency.format(totalFirepower)}。顺序应是现金、超额长期、剩余保证金，不要把顺序倒过来。`
+            : "未按系统性回调处理时，默认只做防守和观察，不启动反向再平衡与保证金抄底。",
+          tag: systemicDrawdown ? drawdownStage : "防守模式",
+          level: systemicDrawdown ? "good" : "warn"
+        }
+      ];
+
+      renderActions(actions);
+    }
+
+    update();
+  </script>
+</body>
+</html>

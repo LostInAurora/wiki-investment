@@ -28,3 +28,9 @@ Added aliases to pages whose filenames differed from their wikilink titles, so m
 
 ## [2026-04-24] maintenance | Alias synonym expansion
 Expanded aliases for concept pages that are likely to be linked by multiple names across languages or wording variants, including [[波动率微笑]]. Updated AGENTS.md to require common synonym aliases, not just exact title aliases.
+
+## [2026-04-24] artifact | 现金流瀑布计算器
+Created output/cash-flow-waterfall-calculator.html, a standalone frontend calculator for target allocation, waterfall profit routing, rebalance thresholds, and risk-discipline checks based on [[现金流瀑布]].
+
+## [2026-04-24] maintenance | 现金流瀑布计算器下跌场景补全
+Expanded output/cash-flow-waterfall-calculator.html with market drawdown inputs, reverse-rebalancing guidance, margin headroom, and continue-falling playbooks for system drawdown scenarios.
