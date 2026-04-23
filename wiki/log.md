@@ -1,13 +1,30 @@
 # Log
 
-Chronological record of all operations.
+## [2026-04-24] ingest | 现金流瀑布：全周期风险管理与资产增值体系
+Processed 现金流瀑布：全周期风险管理与资产增值体系.md. Created 10 new pages.
+New entities: [[QQQM]], [[VOO]].
+New concepts: [[仓位配比系统]], [[定投仓位]], [[现金仓位]], [[现金流瀑布]], [[Wheel Strategy]], [[LEAPS]], [[Sell Put]], [[RSI]].
 
-## [2026-04-23] setup | Vault initialized
-Created vault "investment" for a personal investment knowledge base focused on asset allocation, securities research, risk management, and long-term wealth building.
-Agent configs: AGENTS.md.
+## [2026-04-24] ingest | 备兑看涨期权实战指南：股票收租与盈利进阶技巧
+Processed 备兑看涨期权实战指南：股票收租与盈利进阶技巧.md. Created 6 new pages, updated 3 existing pages.
+New entities: [[Walmart]], [[Amazon]], [[QBTS]].
+New concepts: [[Covered Call]], [[布林带]].
+Updated concepts: [[Sell Put]], [[Wheel Strategy]], [[RSI]].
 
-## [2026-04-23] ingest | 一个简单的仓位体系，有定投底仓， 有现金流， 有爆发力！稳定跑赢大盘， 自动调节风险。 年轻用它提高收益， 年长用它安心退休。
-Processed 一个简单的仓位体系，有定投底仓， 有现金流， 有爆发力！稳定跑赢大盘， 自动调节风险。 年轻用它提高收益， 年长用它安心退休。.md. Created source, entity, and concept pages for [[天哥复利之道]], [[QQQM]], [[VOO]], [[仓位配比系统]], [[现金流瀑布]], [[定投底仓]], [[现金仓位]], [[LEAPS]], [[Sell Put]], and [[RSI]].
+## [2026-04-24] ingest | 期权风险指标与隐含波动率深度解析
+Processed 期权风险指标与隐含波动率深度解析.md. Created 8 new pages.
+New concepts: [[隐含波动率]], [[Delta]], [[Gamma]], [[Vega]], [[Theta]], [[Rho]], [[波动率微笑]].
 
-## [2026-04-23] ingest | 学会这招，让你每月收到上万美金现金流， 也许你早就可以退休了！实盘展示 Covered Call怎么让股票成本归零！
-Processed 学会这招，让你每月收到上万美金现金流， 也许你早就可以退休了！实盘展示 Covered Call怎么让股票成本归零！.md. Created and linked pages for [[Covered Call]], [[Wheel Strategy]], [[布林带]], [[Walmart]], [[Amazon]], and [[QBTS]], and updated the shared strategy graph around [[Sell Put]] and [[RSI]].
+## [2026-04-24] ingest | 股票技术指标分析报告
+Processed 股票技术指标分析报告.md. Created 7 new pages, updated 2 existing pages.
+New concepts: [[SMA]], [[EMA]], [[MACD]], [[ADX]], [[VWAP]], [[ATR]].
+Updated concepts: [[RSI]], [[布林带]].
+
+## [2026-04-24] lint | Health check
+Found 0 errors, 0 warnings, 3 info items. Fixed: none.
+
+## [2026-04-24] maintenance | Wikilink alias repair
+Added aliases to pages whose filenames differed from their wikilink titles, so mixed Chinese/English links resolve correctly in Obsidian. Updated project instructions in AGENTS.md to require aliases whenever filename slugs and link text differ.
+
+## [2026-04-24] maintenance | Alias synonym expansion
+Expanded aliases for concept pages that are likely to be linked by multiple names across languages or wording variants, including [[波动率微笑]]. Updated AGENTS.md to require common synonym aliases, not just exact title aliases.

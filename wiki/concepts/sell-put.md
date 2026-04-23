@@ -1,24 +1,27 @@
 ---
 aliases: [Sell Put]
 tags: [investment, options, concept]
-sources: [position-sizing-cash-flow-waterfall-system.md, covered-call-cash-flow-strategy.md]
-created: 2026-04-23
-updated: 2026-04-23
+sources: [cash-flow-waterfall-system.md, covered-call-practical-guide.md]
+created: 2026-04-24
+updated: 2026-04-24
 ---
 
 # Sell Put
 
 ## Summary
 
-[[Sell Put]] 在当前知识库中有两种主要用途。第一，它可以作为期权现金流策略的一部分，在账户允许的风险边界内提供权利金收入。第二，它可以作为建仓工具，在希望以更低价格接入标的时替代直接买入。
+[[Sell Put]] 在当前知识库中主要有两类用途：一是作为 [[Wheel Strategy]] 的起点，用于在希望的价格区间内争取接入标的；二是在系统性回调中作为有限度的逆向再平衡工具，以较保守的执行价收取权利金。
 
-## Roles In Sources
+## Key Notes
 
-- 在 [[一个简单的仓位体系，有定投底仓， 有现金流， 有爆发力！稳定跑赢大盘， 自动调节风险。 年轻用它提高收益， 年长用它安心退休。]] 中，它被放在期权仓位和回调再平衡场景下使用。
-- 在 [[学会这招，让你每月收到上万美金现金流， 也许你早就可以退休了！实盘展示 Covered Call怎么让股票成本归零！]] 中，它被作为 [[Amazon]] 等超卖标的的替代策略，并且是 [[Wheel Strategy]] 的起点。
+- 在 [[现金流瀑布：全周期风险管理与资产增值体系]] 中，它被用于系统性回调中的战术补仓。
+- 在 [[备兑看涨期权实战指南：股票收租与盈利进阶技巧]] 中，它被用于替代超卖环境下不合适的 [[Covered Call]]。
+- 回调场景中更偏好 Delta 约 0.15 到 0.2 的远虚值执行价。
+- 保证金使用上限不应超过账户总额的 25%。
 
 ## Related Pages
 
 - [[Covered Call]]
 - [[Wheel Strategy]]
+- [[现金仓位]]
 - [[Amazon]]

@@ -45,6 +45,12 @@ Every wiki page MUST include YAML frontmatter:
     updated: YYYY-MM-DD
     ---
 
+If the filename slug differs from the page title or from the `[[wikilink]]` text you expect to use, the page MUST also include:
+
+    aliases: [Exact Page Title]
+
+Obsidian resolves wikilinks by filename or alias, not by the `# Heading` alone. Never rely on the H1 title by itself to make links work.
+
 Use `[[wikilink]]` syntax for all internal links. When you mention a concept, entity, or source that has its own page, link it.
 
 ## Operations
@@ -115,6 +121,17 @@ Filenames use **kebab-case** with `.md` extension. Page titles inside the file u
 When creating `[[wikilinks]]`, use the page title (Title Case), not the filename:
 - Correct: `[[Entity Name]]`
 - Wrong: `[[entity-name]]`
+
+If the page is linked in a different language or script than its filename slug, add the exact link text to `aliases:`. Example: a file named `cash-flow-waterfall-system.md` with title `# 现金流瀑布：全周期风险管理与资产增值体系` must include `aliases: [现金流瀑布：全周期风险管理与资产增值体系]`.
+
+When creating or updating pages, check that every non-filename wikilink target is resolvable in Obsidian via filename or alias. Mixed Chinese/English naming without aliases is not allowed.
+
+For concepts that commonly appear under multiple names, add the main synonym set to `aliases:` up front. This includes:
+- Chinese vs English names
+- Full term vs abbreviation
+- Common variant wording used in sources or future notes
+
+Example: a page titled `# 波动率微笑` should include aliases such as `波动率偏斜`, `volatility smile`, and `volatility skew` if those variants may appear in links.
 
 To slugify a title into a filename: lowercase, replace spaces with hyphens, remove special characters, trim to reasonable length.
 

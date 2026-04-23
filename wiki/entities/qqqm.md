@@ -1,17 +1,23 @@
 ---
-tags: [investment, etf, entity]
-sources: [position-sizing-cash-flow-waterfall-system.md]
-created: 2026-04-23
-updated: 2026-04-23
+tags: [investment, funds, entity]
+sources: [cash-flow-waterfall-system.md]
+created: 2026-04-24
+updated: 2026-04-24
 ---
 
 # QQQM
 
 ## Summary
 
-[[QQQM]] 在当前来源中被定位为 [[定投底仓]] 的成长型组成部分。作者把它与 [[VOO]] 并列使用，用来承接长期复利账户中的科技和成长暴露，并把它放在 [[仓位配比系统]] 的长期层中，而不是现金流期权层中。
+[[QQQM]] 在当前知识库中被定位为 [[定投仓位]] 内承接成长暴露的 ETF。它与 [[VOO]] 和优质个股一起构成 [[仓位配比系统]] 的长期资产层，用于平衡成长性与稳定性。
 
-## Source Notes
+## Key Notes
 
-- 在 [[一个简单的仓位体系，有定投底仓， 有现金流， 有爆发力！稳定跑赢大盘， 自动调节风险。 年轻用它提高收益， 年长用它安心退休。]] 中，作者建议长期底仓由 [[QQQM]]、[[VOO]] 和精选个股组成。
+- 在 [[现金流瀑布：全周期风险管理与资产增值体系]] 中，[[QQQM]] 占 [[定投仓位]] 的建议权重之一。
+- 它被归入长期复利层，而不是期权现金流层。
 
+## Related Pages
+
+- [[VOO]]
+- [[定投仓位]]
+- [[仓位配比系统]]

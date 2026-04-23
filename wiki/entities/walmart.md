@@ -1,17 +1,23 @@
 ---
-tags: [investment, stock, entity]
-sources: [covered-call-cash-flow-strategy.md]
-created: 2026-04-23
-updated: 2026-04-23
+tags: [investment, stocks, entity]
+sources: [covered-call-practical-guide.md]
+created: 2026-04-24
+updated: 2026-04-24
 ---
 
 # Walmart
 
 ## Summary
 
-[[Walmart]] 在当前来源中被用作适合执行 [[Covered Call]] 的案例。作者认为该股在示例时点处于较强趋势和偏高情绪区间，配合较高的隐含波动和财报事件，使其成为“高位收租”的代表性样本。
+[[Walmart]] 在当前知识库中被作为高位卖出 [[Covered Call]] 的案例标的。来源用它说明，当标的处于高位、[[RSI]] 偏高且波动率条件较好时，卖出 call 更容易拿到理想权利金。
 
-## Source Notes
+## Key Notes
 
-- 在 [[学会这招，让你每月收到上万美金现金流， 也许你早就可以退休了！实盘展示 Covered Call怎么让股票成本归零！]] 中，作者将 [[Walmart]] 作为 RSI 偏高、接近或突破 [[布林带]] 上轨时卖出 [[Covered Call]] 的例子。
+- 在 [[备兑看涨期权实战指南：股票收租与盈利进阶技巧]] 中，[[Walmart]] 被用作正面案例。
+- 该案例强调的是择时和权利金条件，而不是长期基本面分析。
 
+## Related Pages
+
+- [[Covered Call]]
+- [[RSI]]
+- [[布林带]]
