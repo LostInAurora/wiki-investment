@@ -13,13 +13,58 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "raw/一个简单的仓位体系，有定投底仓， 有现金流， 有爆发力！稳定跑赢大盘， 自动调节风险。 年轻用它提高收益， 年长用它安心退休。.md",
+                "file": "wiki/concepts/implied-volatility.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "一个简单的仓位体系，有定投底仓， 有现金流， 有爆发力！稳定跑赢大盘， 自动调节风险。 年轻用它提高收益， 年长用它安心退休。"
-            }
+              "title": "implied-volatility"
+            },
+            "group": "0b114c655233960e"
+          }
+        ]
+      },
+      {
+        "id": "33a465d81a610968",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8007a793cff9bcc3",
+            "type": "leaf",
+            "state": {
+              "type": "localgraph",
+              "state": {
+                "file": "wiki/concepts/implied-volatility.md",
+                "options": {
+                  "collapse-filter": true,
+                  "search": "",
+                  "localJumps": 1,
+                  "localBacklinks": true,
+                  "localForelinks": true,
+                  "localInterlinks": false,
+                  "showTags": false,
+                  "showAttachments": false,
+                  "hideUnresolved": false,
+                  "collapse-color-groups": true,
+                  "colorGroups": [],
+                  "collapse-display": true,
+                  "showArrow": false,
+                  "textFadeMultiplier": 0,
+                  "nodeSizeMultiplier": 1,
+                  "lineSizeMultiplier": 1,
+                  "collapse-forces": true,
+                  "centerStrength": 0.518713248970312,
+                  "repelStrength": 10,
+                  "linkStrength": 1,
+                  "linkDistance": 250,
+                  "scale": 1,
+                  "close": false
+                }
+              },
+              "icon": "lucide-git-fork",
+              "title": "implied-volatility 的关系图"
+            },
+            "group": "0b114c655233960e"
           }
         ]
       }
@@ -78,7 +123,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 321.50328826904297
   },
   "right": {
     "id": "9dbdd0bbf7322e82",
@@ -94,7 +139,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "raw/一个简单的仓位体系，有定投底仓， 有现金流， 有爆发力！稳定跑赢大盘， 自动调节风险。 年轻用它提高收益， 年长用它安心退休。.md",
+                "file": "wiki/concepts/implied-volatility.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +149,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "一个简单的仓位体系，有定投底仓， 有现金流， 有爆发力！稳定跑赢大盘， 自动调节风险。 年轻用它提高收益， 年长用它安心退休。 的反向链接列表"
+              "title": "implied-volatility 的反向链接列表"
             }
           },
           {
@@ -113,12 +158,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "raw/一个简单的仓位体系，有定投底仓， 有现金流， 有爆发力！稳定跑赢大盘， 自动调节风险。 年轻用它提高收益， 年长用它安心退休。.md",
+                "file": "wiki/concepts/implied-volatility.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "一个简单的仓位体系，有定投底仓， 有现金流， 有爆发力！稳定跑赢大盘， 自动调节风险。 年轻用它提高收益， 年长用它安心退休。 的出链列表"
+              "title": "implied-volatility 的出链列表"
             }
           },
           {
@@ -156,13 +201,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "raw/一个简单的仓位体系，有定投底仓， 有现金流， 有爆发力！稳定跑赢大盘， 自动调节风险。 年轻用它提高收益， 年长用它安心退休。.md",
+                "file": "wiki/concepts/implied-volatility.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "一个简单的仓位体系，有定投底仓， 有现金流， 有爆发力！稳定跑赢大盘， 自动调节风险。 年轻用它提高收益， 年长用它安心退休。 的大纲"
+              "title": "implied-volatility 的大纲"
             }
           }
         ]
@@ -185,28 +230,37 @@
   },
   "active": "644732899789e76c",
   "lastOpenFiles": [
-    "wiki/concepts/bollinger-bands.md",
-    "wiki/concepts/rsi.md",
-    "wiki/concepts/leaps.md",
-    "wiki/concepts/wheel-strategy.md",
-    "wiki/concepts/sell-put.md",
-    "wiki/concepts/covered-call.md",
-    "wiki/concepts/cash-allocation.md",
-    "wiki/concepts/core-dca-base.md",
-    "wiki/concepts/cash-flow-waterfall.md",
-    "wiki/concepts/position-sizing-system.md",
-    "wiki/entities/qbts.md",
-    "wiki/entities/amazon.md",
-    "wiki/entities/walmart.md",
-    "wiki/entities/voo.md",
-    "wiki/entities/qqqm.md",
-    "wiki/entities/tiange-fuli-zhi-dao.md",
-    "wiki/sources/covered-call-cash-flow-strategy.md",
-    "wiki/sources/position-sizing-cash-flow-waterfall-system.md",
-    "raw/12. 不要把Covered Call当成收租策略_哔哩哔哩_bilibili.md",
-    "raw/一个简单的仓位体系，有定投底仓， 有现金流， 有爆发力！稳定跑赢大盘， 自动调节风险。 年轻用它提高收益， 年长用它安心退休。.md",
-    "raw/学会这招，让你每月收到上万美金现金流， 也许你早就可以退休了！实盘展示 Covered Call怎么让股票成本归零！.md",
     "AGENTS.md",
+    "wiki/concepts/leaps.md",
+    "wiki/concepts/macd.md",
+    "wiki/concepts/implied-volatility.md",
+    "隐含波动率.md",
+    "wiki/concepts/vega.md",
+    "wiki/concepts/volatility-smile.md",
+    "波动率微笑.md",
+    "wiki/concepts/delta.md",
+    "wiki/concepts/ema.md",
+    "wiki/concepts/gamma.md",
+    "wiki/concepts/theta.md",
+    "wiki/concepts/wheel-strategy.md",
+    "wiki/concepts/covered-call.md",
+    "wiki/concepts/core-investment-allocation.md",
+    "wiki/concepts/atr.md",
+    "wiki/sources/covered-call-practical-guide.md",
+    "wiki/sources/common-technical-indicators-report.md",
+    "wiki/sources/cash-flow-waterfall-system.md",
+    "wiki/index.md",
+    "raw/现金流瀑布：全周期风险管理与资产增值体系.md",
+    "wiki/concepts/vwap.md",
+    "wiki/concepts/adx.md",
+    "wiki/concepts/sma.md",
+    "wiki/concepts/rho.md",
+    "wiki/concepts/bollinger-bands.md",
+    "wiki/synthesis",
+    "wiki/concepts",
+    "wiki/entities",
+    "wiki/sources",
+    "output/position-sizing-waterfall-simulator.html",
     "未命名.base"
   ]
 }
