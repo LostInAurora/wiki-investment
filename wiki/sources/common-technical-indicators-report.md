@@ -1,14 +1,14 @@
 ---
-aliases: [股票技术指标分析报告]
+aliases: [知识：股票技术指标分析报告, 股票技术指标分析报告]
 tags: [investment, stocks, review, source]
-sources: [股票技术指标分析报告.md]
+sources: [知识：股票技术指标分析报告.md]
 created: 2026-04-24
 updated: 2026-04-24
 ---
 
-# 股票技术指标分析报告
+# 知识：股票技术指标分析报告
 
-**Source:** 股票技术指标分析报告.md
+**Source:** 知识：股票技术指标分析报告.md
 **Date ingested:** 2026-04-24
 **Type:** report
 

@@ -1,7 +1,7 @@
 ---
 aliases: [Covered Call]
 tags: [investment, options, income-strategy, concept]
-sources: [covered-call-practical-guide.md]
+sources: [covered-call-practical-guide.md, us-stock-options-wheel-retirement-strategy.md]
 created: 2026-04-24
 updated: 2026-04-24
 ---
@@ -18,6 +18,7 @@ updated: 2026-04-24
 - 更适合在 [[RSI]] 偏高、价格接近 [[布林带]] 上轨时执行。
 - 常见的管理周期是 30 到 45 天。
 - 对不愿卖出的核心资产应谨慎使用。
+- 在 [[Wheel Strategy]] 中，它通常发生在 [[Sell Put]] 被指派、投资者已经持有正股之后。
 
 ## Related Pages
 
@@ -27,3 +28,4 @@ updated: 2026-04-24
 - [[布林带]]
 - [[Walmart]]
 - [[QBTS]]
+- [[退休现金流策略]]

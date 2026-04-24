@@ -13,58 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "raw/天哥期权：备兑看涨期权实战指南：股票收租与盈利进阶技巧.md",
+                "file": "raw/天哥策略：现金流瀑布：全周期风险管理与资产增值体系.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "天哥期权：备兑看涨期权实战指南：股票收租与盈利进阶技巧"
-            },
-            "group": "0b114c655233960e"
-          }
-        ]
-      },
-      {
-        "id": "33a465d81a610968",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "8007a793cff9bcc3",
-            "type": "leaf",
-            "state": {
-              "type": "localgraph",
-              "state": {
-                "file": "raw/天哥期权：备兑看涨期权实战指南：股票收租与盈利进阶技巧.md",
-                "options": {
-                  "collapse-filter": true,
-                  "search": "",
-                  "localJumps": 1,
-                  "localBacklinks": true,
-                  "localForelinks": true,
-                  "localInterlinks": false,
-                  "showTags": false,
-                  "showAttachments": false,
-                  "hideUnresolved": false,
-                  "collapse-color-groups": true,
-                  "colorGroups": [],
-                  "collapse-display": true,
-                  "showArrow": false,
-                  "textFadeMultiplier": 0,
-                  "nodeSizeMultiplier": 1,
-                  "lineSizeMultiplier": 1,
-                  "collapse-forces": true,
-                  "centerStrength": 0.518713248970312,
-                  "repelStrength": 10,
-                  "linkStrength": 1,
-                  "linkDistance": 250,
-                  "scale": 1,
-                  "close": false
-                }
-              },
-              "icon": "lucide-git-fork",
-              "title": "天哥期权：备兑看涨期权实战指南：股票收租与盈利进阶技巧 的关系图"
-            },
-            "group": "0b114c655233960e"
+              "title": "天哥策略：现金流瀑布：全周期风险管理与资产增值体系"
+            }
           }
         ]
       }
@@ -228,34 +183,35 @@
       "bases:新建数据库": false
     }
   },
-  "active": "644732899789e76c",
+  "active": "ce92ced72d30dcf4",
   "lastOpenFiles": [
-    "raw/天哥策略：现金流瀑布：全周期风险管理与资产增值体系.md",
-    "raw/天哥期权：备兑看涨期权实战指南：股票收租与盈利进阶技巧.md",
+    "wiki/entities/nvidia.md",
+    "wiki/entities/tesla.md",
+    "wiki/entities/apple.md",
+    "wiki/entities/qqq.md",
+    "wiki/entities/spy.md",
+    "wiki/concepts/willingness-to-own.md",
+    "wiki/concepts/retirement-cash-flow-strategy.md",
+    "wiki/concepts/sequence-of-returns-risk.md",
+    "wiki/concepts/4-percent-rule.md",
+    "wiki/sources/us-stock-options-wheel-retirement-strategy.md",
+    "raw/天哥期权：美股期权轮置：超越4法则的退休策略.md",
     "raw/知识：股票技术指标分析报告.md",
+    "raw/天哥期权：备兑看涨期权实战指南：股票收租与盈利进阶技巧.md",
+    "raw/天哥策略：现金流瀑布：全周期风险管理与资产增值体系.md",
+    "raw/天哥期美股期权轮置：超越4法则的退休策略.md",
+    "raw/美股期权轮置：超越4%法则的退休策略.md",
     "raw/知识：期权风险指标与隐含波动率深度解析.md",
-    "output/cash-flow-waterfall-calculator.html",
+    "wiki/entities/walmart.md",
+    "wiki/entities/voo.md",
+    "wiki/entities/qqqm.md",
+    "wiki/entities/qbts.md",
+    "wiki/sources/common-technical-indicators-report.md",
     "wiki/sources/cash-flow-waterfall-system.md",
+    "output/cash-flow-waterfall-calculator.html",
     "wiki/sources/options-greeks-and-implied-volatility.md",
     "wiki/sources/covered-call-practical-guide.md",
-    "wiki/sources/common-technical-indicators-report.md",
     "wiki/index.md",
-    "wiki/concepts/implied-volatility.md",
-    "AGENTS.md",
-    "wiki/concepts/leaps.md",
-    "wiki/concepts/macd.md",
-    "隐含波动率.md",
-    "wiki/concepts/vega.md",
-    "wiki/concepts/volatility-smile.md",
-    "波动率微笑.md",
-    "wiki/concepts/delta.md",
-    "wiki/concepts/ema.md",
-    "wiki/concepts/gamma.md",
-    "wiki/concepts/theta.md",
-    "wiki/concepts/wheel-strategy.md",
-    "wiki/concepts/covered-call.md",
-    "wiki/concepts/core-investment-allocation.md",
-    "wiki/concepts/atr.md",
     "wiki/synthesis",
     "wiki/concepts",
     "wiki/entities",

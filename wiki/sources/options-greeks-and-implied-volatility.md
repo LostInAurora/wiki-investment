@@ -1,14 +1,14 @@
 ---
-aliases: [期权风险指标与隐含波动率深度解析]
+aliases: [知识：期权风险指标与隐含波动率深度解析, 期权风险指标与隐含波动率深度解析]
 tags: [investment, options, risk-management, source]
-sources: [期权风险指标与隐含波动率深度解析.md]
+sources: [知识：期权风险指标与隐含波动率深度解析.md]
 created: 2026-04-24
 updated: 2026-04-24
 ---
 
-# 期权风险指标与隐含波动率深度解析
+# 知识：期权风险指标与隐含波动率深度解析
 
-**Source:** 期权风险指标与隐含波动率深度解析.md
+**Source:** 知识：期权风险指标与隐含波动率深度解析.md
 **Date ingested:** 2026-04-24
 **Type:** explainer
 

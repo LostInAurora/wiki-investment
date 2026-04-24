@@ -37,3 +37,9 @@ Expanded output/cash-flow-waterfall-calculator.html with market drawdown inputs,
 
 ## [2026-04-24] lint | Health check
 Found 4 errors, 1 warning, 1 info items. Fixed: none.
+
+## [2026-04-24] ingest | 天哥期权：美股期权轮置：超越4法则的退休策略
+Processed 天哥期权：美股期权轮置：超越4法则的退休策略.md. Created 10 new pages, updated 8 existing pages.
+New entities: [[SPY]], [[QQQ]], [[Apple]], [[Tesla]], [[NVIDIA]].
+New concepts: [[4% 法则]], [[收益序列风险]], [[退休现金流策略]], [[接盘意愿]].
+Updated concepts: [[Sell Put]], [[Wheel Strategy]], [[Covered Call]], [[现金流瀑布]].
