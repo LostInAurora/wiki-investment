@@ -34,3 +34,6 @@ Created output/cash-flow-waterfall-calculator.html, a standalone frontend calcul
 
 ## [2026-04-24] maintenance | 现金流瀑布计算器下跌场景补全
 Expanded output/cash-flow-waterfall-calculator.html with market drawdown inputs, reverse-rebalancing guidance, margin headroom, and continue-falling playbooks for system drawdown scenarios.
+
+## [2026-04-24] lint | Health check
+Found 4 errors, 1 warning, 1 info items. Fixed: none.
