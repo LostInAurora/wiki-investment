@@ -1,9 +1,9 @@
 ---
 aliases: [现金仓位]
 tags: [investment, liquidity, concept]
-sources: [cash-flow-waterfall-system.md]
+sources: [cash-flow-waterfall-system.md, leaps-infinite-rollover-compounding-strategy.md]
 created: 2026-04-24
-updated: 2026-04-24
+updated: 2026-04-25
 ---
 
 # 现金仓位
@@ -18,9 +18,11 @@ updated: 2026-04-24
 - 退休或自由职业状态下，建议保留约 10% 现金。
 - 它与 [[现金流瀑布]] 紧密相连，因为期权利润应先补充该层。
 - 它兼任生活预备金，避免在低位被迫卖出长期资产。
+- 在 [[LEAPS 无限续杯策略]] 中，40% 现金储备被用作补仓和续约资金，功能更偏策略内风险缓冲。
 
 ## Related Pages
 
 - [[仓位配比系统]]
 - [[现金流瀑布]]
 - [[Sell Put]]
+- [[LEAPS 无限续杯策略]]

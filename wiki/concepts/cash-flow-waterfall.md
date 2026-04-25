@@ -1,9 +1,9 @@
 ---
 aliases: [现金流瀑布]
 tags: [investment, cash-flow, concept]
-sources: [cash-flow-waterfall-system.md, us-stock-options-wheel-retirement-strategy.md]
+sources: [cash-flow-waterfall-system.md, us-stock-options-wheel-retirement-strategy.md, leaps-infinite-rollover-compounding-strategy.md]
 created: 2026-04-24
-updated: 2026-04-24
+updated: 2026-04-25
 ---
 
 # 现金流瀑布
@@ -14,12 +14,15 @@ updated: 2026-04-24
 
 新的退休现金流来源补充了同一方向的目标：尽量让资产产生现金流，而不是在不利市场环境中被动卖出本金。
 
+新的 [[LEAPS 无限续杯策略]] 来源提供了另一种利润处理方式：在 LEAPS 子策略内部通过展期和收割降低持仓成本。与 [[现金流瀑布]] 相比，它更进攻，适合被视为独立策略预算，而不是替代账户级资金纪律。
+
 ## Key Notes
 
 - 期权利润不应长期留在高波动仓位中继续滚动。
 - [[LEAPS]] 获利后，利润需要撤出期权池并分配到现金与长期层。
 - 在系统性回调中允许有限度地逆向再平衡，但不取消整体风险纪律。
 - 与 [[退休现金流策略]] 的共同点是强调现金流覆盖需求、降低本金消耗。
+- [[LEAPS 无限续杯策略]] 可作为期权层内部策略，但其利润继续滚动的做法需要受账户级现金流规则约束。
 
 ## Related Pages
 
@@ -30,3 +33,4 @@ updated: 2026-04-24
 - [[仓位配比系统]]
 - [[退休现金流策略]]
 - [[收益序列风险]]
+- [[LEAPS 无限续杯策略]]

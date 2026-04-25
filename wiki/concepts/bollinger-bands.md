@@ -1,9 +1,9 @@
 ---
 aliases: [布林带]
 tags: [investment, technical-analysis, concept]
-sources: [covered-call-practical-guide.md, common-technical-indicators-report.md]
+sources: [covered-call-practical-guide.md, common-technical-indicators-report.md, leaps-long-term-options-practical-manual.md]
 created: 2026-04-24
-updated: 2026-04-24
+updated: 2026-04-25
 ---
 
 # 布林带
@@ -16,9 +16,11 @@ updated: 2026-04-24
 
 - 在 [[天哥期权：备兑看涨期权实战指南：股票收租与盈利进阶技巧]] 中，价格接近或突破上轨是卖出 [[Covered Call]] 的偏好时机之一。
 - 在 [[知识：股票技术指标分析报告]] 中，它被放入波动和震荡识别工具集合。
+- 在 [[天哥期权：LEAPS长期期权投资全实战手册]] 中，价格触及或跌破下轨可作为 [[LEAPS]] 入场参考。
 
 ## Related Pages
 
 - [[Covered Call]]
+- [[LEAPS]]
 - [[RSI]]
 - [[ATR]]

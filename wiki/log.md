@@ -43,3 +43,15 @@ Processed 天哥期权：美股期权轮置：超越4法则的退休策略.md. C
 New entities: [[SPY]], [[QQQ]], [[Apple]], [[Tesla]], [[NVIDIA]].
 New concepts: [[4% 法则]], [[收益序列风险]], [[退休现金流策略]], [[接盘意愿]].
 Updated concepts: [[Sell Put]], [[Wheel Strategy]], [[Covered Call]], [[现金流瀑布]].
+
+## [2026-04-25] ingest | 天哥期权：LEAPS长期期权投资全实战手册
+Processed 天哥期权：LEAPS长期期权投资全实战手册.md. Created 8 new pages, updated 13 existing pages.
+New entities: [[Alphabet]].
+New concepts: [[VIX]], [[IV Crush]], [[Limit Order]], [[期权滑点]], [[期权展期]], [[深度价内期权]].
+Updated concepts: [[LEAPS]], [[Delta]], [[Theta]], [[隐含波动率]], [[Vega]], [[RSI]], [[布林带]], [[仓位配比系统]].
+
+## [2026-04-25] ingest | 天哥策略：LEAPS期权“无限续杯”实战复利策略
+Processed 天哥策略：LEAPS期权“无限续杯”实战复利策略.md. Created 2 new pages, updated 10 existing pages.
+New concepts: [[LEAPS 无限续杯策略]].
+Updated entities: [[QQQ]], [[SPY]].
+Updated concepts: [[LEAPS]], [[Delta]], [[Gamma]], [[Theta]], [[Limit Order]], [[期权滑点]], [[期权展期]], [[深度价内期权]], [[现金仓位]], [[现金流瀑布]].

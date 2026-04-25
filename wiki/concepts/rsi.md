@@ -1,8 +1,8 @@
 ---
 tags: [investment, technical-analysis, concept]
-sources: [cash-flow-waterfall-system.md, covered-call-practical-guide.md, common-technical-indicators-report.md]
+sources: [cash-flow-waterfall-system.md, covered-call-practical-guide.md, common-technical-indicators-report.md, leaps-long-term-options-practical-manual.md]
 created: 2026-04-24
-updated: 2026-04-24
+updated: 2026-04-25
 ---
 
 # RSI
@@ -16,10 +16,12 @@ updated: 2026-04-24
 - 在 [[天哥策略：现金流瀑布：全周期风险管理与资产增值体系]] 中，[[RSI]] 低于 35 是 [[LEAPS]] 的重要触发条件。
 - 在 [[天哥期权：备兑看涨期权实战指南：股票收租与盈利进阶技巧]] 中，[[RSI]] 接近或高于 70 是卖出 [[Covered Call]] 的偏好条件。
 - 在 [[知识：股票技术指标分析报告]] 中，它被归类为震荡和择时类常用指标。
+- 在 [[天哥期权：LEAPS长期期权投资全实战手册]] 中，RSI 小于等于 40 可作为 [[LEAPS]] 入场参考，RSI 大于 70 时应避免追高。
 
 ## Related Pages
 
 - [[LEAPS]]
 - [[Covered Call]]
 - [[布林带]]
+- [[VIX]]
 - [[MACD]]
