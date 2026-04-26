@@ -1,4 +1,5 @@
 ---
+aliases: [VWAP, Volume Weighted Average Price]
 tags: [investment, technical-analysis, concept]
 sources: [common-technical-indicators-report.md]
 created: 2026-04-24

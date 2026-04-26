@@ -1,4 +1,5 @@
 ---
+aliases: [RSI, Relative Strength Index]
 tags: [investment, technical-analysis, concept]
 sources: [cash-flow-waterfall-system.md, covered-call-practical-guide.md, common-technical-indicators-report.md, leaps-long-term-options-practical-manual.md]
 created: 2026-04-24

@@ -1,4 +1,5 @@
 ---
+aliases: [QQQM]
 tags: [investment, funds, entity]
 sources: [cash-flow-waterfall-system.md]
 created: 2026-04-24

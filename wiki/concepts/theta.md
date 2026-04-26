@@ -1,4 +1,5 @@
 ---
+aliases: [Theta]
 tags: [investment, options, concept]
 sources: [options-greeks-and-implied-volatility.md, leaps-long-term-options-practical-manual.md, leaps-infinite-rollover-compounding-strategy.md]
 created: 2026-04-24
@@ -27,3 +28,4 @@ updated: 2026-04-25
 - [[Sell Put]]
 - [[LEAPS]]
 - [[期权展期]]
+- [[知识：期权风险指标与隐含波动率深度解析]]

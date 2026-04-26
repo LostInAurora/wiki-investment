@@ -1,4 +1,5 @@
 ---
+aliases: [ATR, Average True Range]
 tags: [investment, technical-analysis, risk-management, concept]
 sources: [common-technical-indicators-report.md]
 created: 2026-04-24

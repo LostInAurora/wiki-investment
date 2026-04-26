@@ -1,4 +1,5 @@
 ---
+aliases: [Walmart, WMT]
 tags: [investment, stocks, entity]
 sources: [covered-call-practical-guide.md]
 created: 2026-04-24

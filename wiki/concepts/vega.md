@@ -1,4 +1,5 @@
 ---
+aliases: [Vega]
 tags: [investment, options, concept]
 sources: [options-greeks-and-implied-volatility.md, leaps-long-term-options-practical-manual.md]
 created: 2026-04-24
@@ -24,3 +25,4 @@ updated: 2026-04-25
 - [[隐含波动率]]
 - [[波动率微笑]]
 - [[IV Crush]]
+- [[知识：期权风险指标与隐含波动率深度解析]]

@@ -1,4 +1,5 @@
 ---
+aliases: [EMA, Exponential Moving Average]
 tags: [investment, technical-analysis, concept]
 sources: [common-technical-indicators-report.md]
 created: 2026-04-24

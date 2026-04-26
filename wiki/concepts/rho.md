@@ -1,4 +1,5 @@
 ---
+aliases: [Rho]
 tags: [investment, options, concept]
 sources: [options-greeks-and-implied-volatility.md]
 created: 2026-04-24
@@ -21,3 +22,4 @@ updated: 2026-04-24
 - [[Delta]]
 - [[Vega]]
 - [[Theta]]
+- [[知识：期权风险指标与隐含波动率深度解析]]
