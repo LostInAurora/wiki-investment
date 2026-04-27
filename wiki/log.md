@@ -59,3 +59,6 @@ Updated concepts: [[LEAPS]], [[Delta]], [[Gamma]], [[Theta]], [[Limit Order]], [
 ## [2026-04-26] lint | Health check
 Found 0 errors, 0 warnings, 3 info items (cross-refs + data gaps noted). Fixed: added `aliases:` to all 17 pages missing them (error resolved); added wikilinks in Related Pages of 8 Greeks/IV concepts to [[知识：期权风险指标与隐含波动率深度解析]] (resolved orphan + main cross-ref gap). Re-verified: 0 broken links, 0 orphans, 0 missing aliases. Data gaps remain for future research/synthesis pages.
 
+
+## [2026-04-27] lint | Health check
+Found 0 errors, 0 warnings, 4 info items (cross-ref opportunities + data gaps + synthesis). Fixed: none (pending user approval for optional enhancements).
