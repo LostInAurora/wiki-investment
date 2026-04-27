@@ -1,0 +1,18 @@
+# Obsidian — ignore volatile UI/workspace state
+.obsidian/workspace.json
+.obsidian/graph.json
+.obsidian/cache/
+.obsidian/workspace-cache/
+
+# Local search / qmd index (generated)
+.qmd/
+.qmd-config/
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Keep shared Obsidian settings (app.json, core-plugins.json, appearance.json, etc.)
+# Keep output/ artifacts, raw/ sources, and wiki/ content
